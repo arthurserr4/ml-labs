@@ -59,3 +59,13 @@ Each step is a commit and runs end to end before the next one starts.
 - **2026-09-25 — step 0.** `uv` project with pytest, this plan. The
   gradient check for step 1 is written but lands with step 1, since it
   fails until `Value` exists.
+- **2026-09-27 — step 1.** `Value` with `+`, `*`, `tanh` and `backward()`.
+  All 9 gradient checks pass. The bugs I wrote on the way were all silent,
+  no crash, just wrong numbers: `*` giving each operand its own value
+  instead of the other's (still passes `a * a`, fails `2 * -3`); `tanh`
+  built without `(self,)` as a child, so the walk stopped there (the `tanh`
+  test alone still passes, `neuron` and `diamond` don't); `topo.append`
+  without `(v)`. Why the order is DFS post-order and not BFS: a node has to
+  wait for all of its users, and BFS orders by shortest distance to the
+  output, which breaks as soon as two paths meet again. The graph is a DAG,
+  not a tree.

@@ -1,0 +1,6 @@
+[project]
+name = "demandlab"
+version = "0.1.0"
+description = "Learn tabular ML by forecasting hourly bicycle demand"
+requires-python = ">=3.12"
+dependencies = []

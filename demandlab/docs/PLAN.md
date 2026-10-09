@@ -77,5 +77,9 @@ rollback. No dashboard, GPU, or new infrastructure platform is required.
 
 ## Log
 
-Planning only. Add a dated entry after each implemented step with the
-experiment, result, mistakes, and next question.
+- **2026-10-09 — step 0, setup.** Added a dependency-free `uv` project, a
+  checksum-pinned downloader, the source/license manifest, and a small CSV
+  inspection script. The downloaded hourly file has 17,379 rows and 17
+  columns. No features, labels, splits, or models have been implemented.
+  Next: inspect timestamp coverage, duplicates, and missing hours before
+  constructing next-hour examples. Step 0's data audit is still open.
